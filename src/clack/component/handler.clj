@@ -1,11 +1,13 @@
 (ns clack.component.handler
   (:require
-   [clack.handler.router :as c.h.router]
+   [clack.handler.api.greeting]
+   [clack.handler.health]
+   [clack.router :as c.router]
    [com.stuartsierra.component :as component]
    [reitit.ring :as ring]))
 
 (defn- build-handler []
-  (ring/ring-handler c.h.router/router))
+  (ring/ring-handler c.router/router))
 
 (defrecord Handler [handler]
   component/Lifecycle

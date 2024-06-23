@@ -5,6 +5,7 @@ format:
 	cljstyle fix
 
 .PHONY: lint
+lint:
 	clj-kondo --lint src
 
 .PHONY: check
