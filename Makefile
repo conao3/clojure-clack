@@ -10,6 +10,10 @@ format:
 .PHONY: check
 check: format lint
 
+.PHONY: test
+test:
+	clojure -M:test --fail-fast
+
 .PHONY: clean
 clean:
 	rm -rf target
