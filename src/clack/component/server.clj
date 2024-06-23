@@ -13,5 +13,3 @@
     (when server
       (jetty/stop-server server))
     (assoc this :server nil)))
-
-

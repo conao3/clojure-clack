@@ -16,4 +16,3 @@
 
 (defn stop [system]
   (component/stop system))
-
