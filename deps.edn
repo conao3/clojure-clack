@@ -7,7 +7,10 @@
   com.stuartsierra/component {:mvn/version "1.1.0"}
   metosin/reitit {:mvn/version "0.7.0"}
   metosin/ring-http-response {:mvn/version "0.9.3"}
-  ring-logger/ring-logger {:mvn/version "1.1.1"}}
+  ring-logger/ring-logger {:mvn/version "1.1.1"}
+  metosin/muuntaja {:mvn/version "0.6.8"}
+  camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.3"}
+  org.clojure/core.memoize {:mvn/version "1.0.257"}}
 
  :aliases
  {:dev
