@@ -4,10 +4,14 @@
    [clack.handler.health]
    [clack.router :as c.router]
    [com.stuartsierra.component :as component]
-   [reitit.ring :as ring]))
+   [reitit.ring :as ring]
+   [ring.logger :as m.logger]))
 
 (defn- build-handler []
-  (ring/ring-handler c.router/router))
+  (ring/ring-handler
+   c.router/router
+   nil
+   {:middleware [m.logger/wrap-with-logger]}))
 
 (defrecord Handler [handler]
   component/Lifecycle
