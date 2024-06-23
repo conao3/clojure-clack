@@ -1,2 +1,3 @@
 {:lib com.github.conao3/clack
- :version "0.1.{{git/commit-count}}"}
+ :version "0.1.{{git/commit-count}}"
+ :main clack.core}
