@@ -1,14 +1,15 @@
 (ns clack.component.handler
   (:require
-   [com.stuartsierra.component :as component]))
+   [clack.handler.router :as c.h.router]
+   [com.stuartsierra.component :as component]
+   [reitit.ring :as ring]))
 
-(defn- ring-handler [_req]
-  {:status 200
-   :body "Hello, Clojure API mod!!!!"})
+(defn- build-handler []
+  (ring/ring-handler c.h.router/router))
 
 (defrecord Handler [handler]
   component/Lifecycle
   (start [this]
-    (assoc this :handler ring-handler))
+    (assoc this :handler (build-handler)))
   (stop [this]
     (assoc this :handler nil)))
