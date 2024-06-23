@@ -1,6 +1,7 @@
 (ns clack.core-test
-  (:require [clojure.test :as t]
-            [clack.core :as sut]))
+  (:require
+   [clack.core :as sut]
+   [clojure.test :as t]))
 
 (t/deftest a-test
   (t/testing "FIXME, I fail."

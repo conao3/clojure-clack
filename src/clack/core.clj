@@ -1,6 +1,7 @@
 (ns clack.core
-  (:require [clojure.edn :as edn])
-  (:gen-class))
+  (:gen-class)
+  (:require
+   [clojure.edn :as edn]))
 
 (def config-file-path (str
                        (System/getProperty "user.home")
