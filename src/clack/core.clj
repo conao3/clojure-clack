@@ -1,7 +1,8 @@
 (ns clack.core
   (:gen-class)
   (:require
-   [clojure.edn :as edn]))
+   [clojure.edn :as edn]
+   [ring.adapter.jetty9 :as jetty]))
 
 (def config-file-path (str
                        (System/getProperty "user.home")
@@ -11,12 +12,9 @@
   (edn/read-string
    (slurp config-file-path)))
 
-(defn greet
-  "Callable entry point to the application."
-  [data]
-  (println (str "Hello, " (or (:name data) "World") "!")))
+(defn ring-handler [_req]
+  {:status 200
+   :body "Hello, Clojure API"})
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (greet {:name (first args)}))
+(defn -main [& _args]
+  (jetty/run-jetty ring-handler {:port 8000}))

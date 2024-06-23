@@ -1,4 +1,9 @@
-{:deps {org.clojure/clojure {:mvn/version "1.11.3"}}
+{:deps
+ {org.clojure/clojure {:mvn/version "1.11.3"}
+  info.sunng/ring-jetty9-adapter {:mvn/version "0.33.2"
+                                  :exclusions [org.slf4j/slf4j-api]}
+  spootnik/unilog {:mvn/version "0.7.32"}}
+
  :aliases
  {:build
   {:deps {com.github.liquidz/build.edn
