@@ -1,70 +1,87 @@
 # clojure-clack
 
-FIXME: my new application.
+A lightweight Clojure web application stack built on Ring and Jetty.
 
-## Installation
+## Overview
 
-Download from https://github.com/conao3/clojure-clack
+clojure-clack provides a structured foundation for building web applications in Clojure. It combines well-established libraries into a cohesive stack:
 
-## Usage
+- **Ring + Jetty9** - HTTP server and request handling
+- **Reitit** - Fast, data-driven routing
+- **Muuntaja** - Content negotiation and JSON serialization with camelCase key transformation
+- **Component** - Lifecycle management for stateful resources
+- **Ring-logger** - Request/response logging middleware
 
-FIXME: explanation
+## Requirements
 
-Run the project directly, via `:exec-fn`:
+- Clojure 1.11+
+- Java 11+
 
-    $ clojure -X:run-x
-    Hello, Clojure!
+## Getting Started
 
-Run the project, overriding the name to be greeted:
+Clone the repository:
 
-    $ clojure -X:run-x :name '"Someone"'
-    Hello, Someone!
+```bash
+git clone https://github.com/conao3/clojure-clack.git
+cd clojure-clack
+```
 
-Run the project directly, via `:main-opts` (`-m conao3.clojure-clack`):
+Start the development server:
 
-    $ clojure -M:run-m
-    Hello, World!
+```bash
+clojure -M:dev
+```
 
-Run the project, overriding the name to be greeted:
+The server will start on the default port. You can then access the endpoints:
 
-    $ clojure -M:run-m Via-Main
-    Hello, Via-Main!
+- `GET /health` - Health check endpoint
+- `GET /api/hello` - Hello greeting (JSON response)
+- `GET /api/goodbye` - Goodbye greeting (JSON response)
 
-Run the project's tests (they'll fail until you edit them):
+## Project Structure
 
-    $ clojure -T:build test
+```
+src/clack/
+  core.clj           # Application entry point
+  system.clj         # Component system definition
+  router.clj         # Route definitions and middleware
+  handler.clj        # Multimethod-based request handlers
+  component/
+    handler.clj      # Handler component
+    server.clj       # Jetty server component
+  handler/
+    health.clj       # Health check handler
+    api/
+      greeting.clj   # API greeting handlers
+```
 
-Run the project's CI pipeline and build an uberjar (this will fail until you edit the tests to pass):
+## Configuration
 
-    $ clojure -T:build ci
+Create a configuration file at `~/.config/clack/config.edn`:
 
-This will produce an updated `pom.xml` file with synchronized dependencies inside the `META-INF`
-directory inside `target/classes` and the uberjar in `target`. You can update the version (and SCM tag)
-information in generated `pom.xml` by updating `build.clj`.
+```edn
+{:server {:port 3000}}
+```
 
-If you don't want the `pom.xml` file in your project, you can remove it. The `ci` task will
-still generate a minimal `pom.xml` as part of the `uber` task, unless you remove `version`
-from `build.clj`.
+## Running Tests
 
-Run that uberjar:
+```bash
+clojure -M:test
+```
 
-    $ java -jar target/clojure-clack-0.1.0-SNAPSHOT.jar
+## Building
 
-## Options
+Build an uberjar for deployment:
 
-FIXME: listing of options this app accepts.
+```bash
+clojure -T:build uber
+```
 
-## Examples
+Run the uberjar:
 
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+```bash
+java -jar target/clack.jar
+```
 
 ## License
 
